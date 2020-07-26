@@ -5,6 +5,7 @@
         "at-rule-no-unknown": null,
         "no-missing-end-of-source-newline": null,
         "block-no-empty": null,
-        "number-leading-zero": null
+        "number-leading-zero": null,
+        "no-empty-source": null
     }
 }
