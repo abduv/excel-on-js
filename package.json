@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
+    "normalize.css": "^8.0.1",
     "stylelint-config-recess-order": "^2.0.4",
     "stylelint-config-standard": "^20.0.0"
   }

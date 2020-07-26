@@ -11,7 +11,8 @@
         "require-jsdoc": "off",
         "arrow-parens": "off",
         "indent": ["error", 4],
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "eol-last": "off"
     },
     "extends": ["eslint:recommended", "google"]
 }

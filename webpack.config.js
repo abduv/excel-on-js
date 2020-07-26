@@ -46,6 +46,8 @@ module.exports = {
     devServer: {
         port: 3000,
         hot: isDev,
+        contentBase: path.resolve(__dirname, 'src'),
+        watchContentBase: true
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -68,10 +70,9 @@ module.exports = {
             filename: filename('css'),
         }),
         new StylelintPlugin({
-            configFile: '.stylelintrc',
+            configFile: './.stylelintrc.json',
             context: path.resolve(__dirname, 'src'),
-            files: 'scss/*.scss',
-            fix: true
+            files: 'scss/*.scss'
         })
     ],
     module: {
