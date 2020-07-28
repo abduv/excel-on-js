@@ -4,7 +4,22 @@ import {createTable} from '@/components/table/table.template';
 export class Table extends ExcelComponent {
     static className = 'excel__table'
 
-    toHTML() {
-        return createTable()
+    constructor($root) {
+        super($root, {
+            name: 'Table',
+            listeners: ['click', 'mousedown', 'mousemove', 'mouseup']
+        })
     }
+
+    toHTML() {
+        return createTable(20)
+    }
+
+    onClick() {}
+
+    onMousedown(e) {}
+
+    onMousemove() {}
+
+    onMouseup() {}
 }
