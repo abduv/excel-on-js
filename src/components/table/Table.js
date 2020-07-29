@@ -31,14 +31,14 @@ export class Table extends ExcelComponent {
                 if (dataResize === 'col') {
                     const delta = event.pageX - coords.right
                     const value = coords.width + delta
-                    $parent.$el.style.width = value + 'px'
+                    $parent.css({width: value + 'px'})
                     cells.forEach(el => {
                         el.style.width = value + 'px'
                     })
                 } else {
                     const delta = event.pageY - coords.bottom
                     const value = coords.height + delta
-                    $parent.$el.style.height = value + 'px'
+                    $parent.css({height: value + 'px'})
                 }
             }
 

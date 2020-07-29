@@ -54,6 +54,14 @@ class Dom {
     findAll(selector) {
         return this.$el.querySelectorAll(selector)
     }
+
+    css(styles = {}) {
+        for (const property in styles) {
+            if ({}.hasOwnProperty.call(styles, property)) {
+                this.$el.style[property] = styles[property]
+            }
+        }
+    }
 }
 
 export function $(selector) {
