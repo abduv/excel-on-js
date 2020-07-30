@@ -6,6 +6,7 @@
         "no-missing-end-of-source-newline": null,
         "block-no-empty": null,
         "number-leading-zero": null,
-        "no-empty-source": null
+        "no-empty-source": null,
+        "no-descending-specificity": null
     }
 }

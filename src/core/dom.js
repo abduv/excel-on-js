@@ -38,6 +38,36 @@ class Dom {
 
         return this
     }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    get dataset() {
+        return this.$el.dataset
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
+    }
+
+    css(styles = {}) {
+        for (const property in styles) {
+            if ({}.hasOwnProperty.call(styles, property)) {
+                this.$el.style[property] = styles[property]
+            }
+        }
+    }
+
+    removeCSS(...properties) {
+        for (const prop of properties) {
+            this.$el.style.removeProperty(prop)
+        }
+    }
 }
 
 export function $(selector) {
