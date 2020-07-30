@@ -62,6 +62,12 @@ class Dom {
             }
         }
     }
+
+    removeCSS(...properties) {
+        for (const prop of properties) {
+            this.$el.style.removeProperty(prop)
+        }
+    }
 }
 
 export function $(selector) {

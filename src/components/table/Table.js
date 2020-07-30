@@ -17,33 +17,51 @@ export class Table extends ExcelComponent {
     }
 
     onMousedown(e) {
-        const dataResize = e.target.dataset.resize
-        if (dataResize) {
+        const resizeType = e.target.dataset.resize
+        if (resizeType) {
             const $resizer = $(e.target)
-            // const $parent = $resizer.$el.parentNode // bad!
-            // const $parent = $resizer.$el.closest('.column') // better but bad
             const $parent = $resizer.closest('[data-type="resizable"]')
             const coords = $parent.getCoords()
             const index = $parent.dataset.col || null
-            const cells = this.$root.findAll(`[data-col="${index}"]`)
+            const sideProp = resizeType === 'col' ? 'bottom' : 'right'
+            let value
+
+            $resizer.css({
+                opacity: 1,
+                [sideProp]: '-2000px'
+            })
 
             document.onmousemove = (event) => {
-                if (dataResize === 'col') {
-                    const delta = event.pageX - coords.right
-                    const value = coords.width + delta
-                    $parent.css({width: value + 'px'})
-                    cells.forEach(el => {
-                        el.style.width = value + 'px'
+                if (resizeType === 'col') {
+                    const delta = event.clientX - coords.right
+                    value = coords.width + delta
+                    $resizer.css({
+                        right: -delta + 'px'
                     })
                 } else {
-                    const delta = event.pageY - coords.bottom
-                    const value = coords.height + delta
-                    $parent.css({height: value + 'px'})
+                    const delta = event.clientY - coords.bottom
+                    value = coords.height + delta
+                    $resizer.css({
+                        bottom: -delta + 'px'
+                    })
                 }
             }
 
             document.onmouseup = () => {
                 document.onmousemove = null
+                document.onmouseup = null
+
+                if (resizeType === 'col') {
+                    const cells = this.$root.findAll(`[data-col="${index}"]`)
+                    $parent.css({width: value + 'px'})
+                    cells.forEach(el => {
+                        el.style.width = value + 'px'
+                    })
+                } else {
+                    $parent.css({height: value + 'px'})
+                }
+
+                $resizer.removeCSS('opacity', 'bottom', 'right')
             }
         }
     }
