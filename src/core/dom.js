@@ -51,6 +51,10 @@ class Dom {
         return this.$el.dataset
     }
 
+    find(selector) {
+        return $(this.$el.querySelector(selector))
+    }
+
     findAll(selector) {
         return this.$el.querySelectorAll(selector)
     }
@@ -67,6 +71,25 @@ class Dom {
         for (const prop of properties) {
             this.$el.style.removeProperty(prop)
         }
+    }
+
+    addClass(className) {
+        this.$el.classList.add(className)
+    }
+
+    removeClass(className) {
+        this.$el.classList.remove(className)
+    }
+
+    id(parse) {
+        if (parse) {
+            const parsed = this.id().split(':')
+            return {
+                row: +parsed[0],
+                col: +parsed[1]
+            }
+        }
+        return this.dataset.id
     }
 }
 
