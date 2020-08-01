@@ -5,7 +5,12 @@ const CODES = {
 
 // function toCell(row, col) {
 //     return `
-//         <div class="cell" contenteditable data-col="${col + 1}" data-row="${row}"></div>
+//         <div
+//              class="cell"
+//              contenteditable
+//              data-col="${col + 1}"
+//              data-row="${row}"
+//          ></div>
 //     `
 // }
 
@@ -33,7 +38,9 @@ function toColumn(col, index) {
 }
 
 function createRow(content, index = '') {
-    const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''
+    const resize = index
+        ? '<div class="row-resize" data-resize="row"></div>'
+        : ''
 
     return `
         <div class="row" data-type="resizable">

@@ -91,6 +91,15 @@ class Dom {
         }
         return this.dataset.id
     }
+
+    addFocus() {
+        this.$el.focus()
+        return this
+    }
+
+    isNotEmpty() {
+        return !!this.$el
+    }
 }
 
 export function $(selector) {
