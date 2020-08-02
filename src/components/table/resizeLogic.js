@@ -1,6 +1,5 @@
 import {$} from '@core/dom';
 
-
 export function resizeHandler(e, $root) {
     return new Promise(resolve => {
         const $resizer = $(e.target)
@@ -50,7 +49,8 @@ export function resizeHandler(e, $root) {
 
             resolve({
                 value,
-                id: resizeType === 'col' ? colId : null
+                id: $parent.dataset[resizeType],
+                type: resizeType
             })
 
             $resizer.removeCSS('opacity', 'bottom', 'right')
