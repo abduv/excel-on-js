@@ -9,6 +9,7 @@ import {
 } from '@/components/table/table.functions';
 import {TableSelection} from '@/components/table/TableSelection';
 import {$} from '@core/dom';
+import * as actions from '@/redux/actions';
 
 export class Table extends ExcelComponent {
     static className = 'excel__table'
@@ -51,7 +52,7 @@ export class Table extends ExcelComponent {
     async resizeTable(e) {
         try {
             const data = await resizeHandler(e, this.$root)
-            this.$dispatch({type: 'TABLE_RESIZE', data})
+            this.$dispatch(actions.tableResize(data))
         } catch (e) {
             console.warn('Resize error', e.message)
         }
