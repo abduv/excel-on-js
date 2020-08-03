@@ -19,6 +19,10 @@ export class TableSelection {
         $group.forEach(cell => cell.addClass(TableSelection.className))
     }
 
+    applyStyle(style) {
+        this.group.forEach(el => el.css(style))
+    }
+
     clear() {
         this.group.forEach(el => el.removeClass(TableSelection.className))
         this.group = []
