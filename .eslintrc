@@ -12,7 +12,7 @@
         "arrow-parens": "off",
         "indent": ["error", 4],
         "comma-dangle": "off",
-        "no-unused-vars": "off",
+        "no-unused-vars": "warn",
         "operator-linebreak": "off"
     },
     "extends": ["eslint:recommended", "google"]

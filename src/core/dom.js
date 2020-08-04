@@ -71,11 +71,7 @@ class Dom {
     }
 
     css(styles = {}) {
-        for (const property in styles) {
-            if ({}.hasOwnProperty.call(styles, property)) {
-                this.$el.style[property] = styles[property]
-            }
-        }
+        Object.assign(this.$el.style, styles)
         return this
     }
 

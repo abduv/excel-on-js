@@ -24,7 +24,7 @@ export class Table extends ExcelComponent {
     }
 
     toHTML() {
-        return createTable(20, this.$getState())
+        return createTable(20, this.store.getState())
     }
 
     prepare() {
@@ -44,16 +44,20 @@ export class Table extends ExcelComponent {
             .$on('formula:done', () => {
                 this.selection.current.addFocus()
             })
-            .$on('toolbar:applyStyle', style => {
-                this.selection.applyStyle(style)
+            .$on('toolbar:applyStyle', value => {
+                this.selection.applyStyle(value)
+                this.$dispatch(actions.applyStyle({
+                    value,
+                    ids: this.selection.selectedIds
+                }))
             })
     }
 
     selectCell($cell) {
         this.selection.select($cell)
         this.$emit('table:select', $cell)
-
-        console.log($cell.getStyles(Object.keys(defaultStyles)))
+        const styles = $cell.getStyles(Object.keys(defaultStyles))
+        this.$dispatch(actions.changeStyles(styles))
     }
 
     async resizeTable(e) {
