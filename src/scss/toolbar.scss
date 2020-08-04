@@ -13,6 +13,6 @@
     border-bottom: 1px solid $border-color;
 
     .button {
-        @include button(green);
+        @include button(#29ea08);
     }
 }
