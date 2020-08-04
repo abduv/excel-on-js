@@ -32,7 +32,7 @@ export class Formula extends ExcelComponent {
 
         this
             .$on('table:select', $cell => {
-                this.$formula.text($cell.text())
+                this.$formula.text($cell.dataset.value)
             })
     }
 
