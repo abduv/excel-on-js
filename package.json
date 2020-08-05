@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
-    "build": "cross-env NODE_ENV=production webpack --mode production"
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "lint": "npx eslint ./src"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,7 @@
     "url": "https://github.com/abduv/excel-on-js/issues"
   },
   "homepage": "https://github.com/abduv/excel-on-js#readme",
-  "private": "true",
+  "private": true,
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "^7.10.4",

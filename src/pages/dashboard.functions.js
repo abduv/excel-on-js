@@ -1,8 +1,19 @@
-function toHTML() {
+import {storage} from '@core/utils';
+
+
+function toHTML(key) {
+    const model = storage(key)
+    const id = key.slice(6)
+    const date = new Date(model.openedDate).toLocaleDateString()
+    const time = new Date(model.openedDate).toLocaleTimeString()
+
     return `
         <li class="db__record">
-            <a href="#">Таблица №1</a>
-            <strong>12.06.2020</strong>
+            <a href="#excel/${id}">${model.title}</a>
+            <strong>
+                ${date} 
+                ${time}
+            </strong>
         </li>
     `
 }

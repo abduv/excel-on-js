@@ -1,8 +1,10 @@
 import {ExcelComponent} from '@core/ExcelComponent';
 import {createHeader} from '@/components/header/header.template';
 import {$} from '@core/dom';
-import * as actions from '@/redux/actions';
+import {changeTitle} from '@/redux/actions';
 import {defaultTitle} from '@/constants';
+import {ActiveRoute} from '@core/routes/ActiveRoute';
+import {storageName} from '@core/utils';
 
 export class Header extends ExcelComponent {
     static className = 'excel__header'
@@ -10,7 +12,7 @@ export class Header extends ExcelComponent {
     constructor($root, options) {
         super($root, {
             name: 'Header',
-            listeners: ['input'],
+            listeners: ['input', 'click'],
             ...options
         });
     }
@@ -22,6 +24,20 @@ export class Header extends ExcelComponent {
 
     onInput(e) {
         const $target = $(e.target)
-        this.$dispatch(actions.changeTitle($target.text()))
+        this.$dispatch(changeTitle($target.text()))
+    }
+
+    onClick(e) {
+        const action = $(e.target).dataset.action
+        if (action === 'delete') {
+            const decision =
+                confirm('Вы действительно хотите удалить это таблицу?')
+            if (decision) {
+                localStorage.removeItem(storageName(ActiveRoute.param))
+                ActiveRoute.navigate('dashboard')
+            }
+        } else if (action === 'exit') {
+            ActiveRoute.navigate('dashboard')
+        }
     }
 }
