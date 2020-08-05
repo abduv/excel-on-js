@@ -14,12 +14,12 @@ class Dom {
     }
 
     text(text) {
+        if (this.$el.tagName.toLowerCase() === 'input') {
+            return this.$el.value.trim()
+        }
         if (typeof text !== 'undefined') {
             this.$el.textContent = text
             return this
-        }
-        if (this.$el.tagName.toLowerCase() === 'INPUT') {
-            return this.$el.value.trim()
         }
         return this.$el.textContent.trim()
     }
