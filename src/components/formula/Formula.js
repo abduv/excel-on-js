@@ -18,9 +18,9 @@ export class Formula extends ExcelComponent {
             <div class="info">fx</div>
             <div 
                 class="input" 
-                id="formula" 
                 contenteditable 
                 spellcheck="false"
+                data-type="formula"
             ></div>
         `
     }
@@ -28,7 +28,7 @@ export class Formula extends ExcelComponent {
     init() {
         super.init()
 
-        this.$formula = this.$root.find('#formula')
+        this.$formula = this.$root.find('[data-type="formula"]')
 
         this
             .$on('table:select', $cell => {
