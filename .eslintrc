@@ -3,7 +3,8 @@
     "env": {
         "es6": true,
         "browser": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "rules": {
         "semi": "off",
@@ -13,7 +14,8 @@
         "indent": ["error", 4],
         "comma-dangle": "off",
         "no-unused-vars": "warn",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "padded-blocks": "off"
     },
     "extends": ["eslint:recommended", "google"]
 }
